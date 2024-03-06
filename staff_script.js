@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
         window.location.href = "staff_profile.html";
 
         // Ask for location permission
-        if (navigator.permissions) {
+      /*  if (navigator.permissions) {
             navigator.permissions.query({name:'geolocation'}).then(function(permissionStatus) {
                 if (permissionStatus.state === 'prompt') {
                     alert("Please allow location access to enable location services.");
@@ -14,6 +14,6 @@ document.addEventListener("DOMContentLoaded", function() {
             });
         } else {
             alert("Your browser does not support location permission requests.");
-        }
+        }*/
     });
 });

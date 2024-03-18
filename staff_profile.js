@@ -17,12 +17,28 @@ function pushLocationToFirebase(latitude, longitude) {
     if (!firstBusRef) {
         firstBusRef = newBusRef; // Store the reference to the first pushed bus
     }
-    update(newBusRef, { 
+    /*update(newBusRef, { 
         latitude: latitude,
         longitude: longitude,
         bus_name : "bus",
         status : "initial"
-    });
+    });*/
+   
+const customId = "BUS_A";
+const newData = {
+    latitude: latitude,
+        longitude: longitude,
+        bus_name : "bus",
+        status : "initial"
+};
+
+firebase.database().ref('-NtFiEYGrX44OsUDKJ8Y' + customId).set(newData)
+    .then(() => {
+        console.log("Data successfully pushed with custom ID");
+    })
+    .catch(error => {
+        console.error("Error pushing data:", error);
+    });    
 } 
 
 function UpdateLocation(latitude, longitude){

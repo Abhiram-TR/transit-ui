@@ -44,7 +44,7 @@ function getLocation() {
             var longitude = position.coords.longitude;
             
             pushLocationToFirebase(latitude, longitude);
-           // setInterval(UpdateLocation(latitude, longitude),40000);
+            setInterval(UpdateLocation(latitude, longitude),40000);
 
 setInterval(() => UpdateLocation(latitude, longitude), 40000);
 

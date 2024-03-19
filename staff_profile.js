@@ -1,68 +1,56 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js"
-import { getDatabase , ref, push, update} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js"
+import { getDatabase, ref, push, update } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js"
 
 const appsettings = {
-    databaseURL : "https://sample-7ef53-default-rtdb.firebaseio.com/"
+    databaseURL: "https://sample-7ef53-default-rtdb.firebaseio.com/"
 }
 
 const app = initializeApp(appsettings)
 const database = getDatabase(app)
-//const BUSESRef = ref(database, "LIST OF BUSES");
+const BUSESRef = ref(database, "LIST OF BUSES");
 
-let firstBusRef = null; // Store reference to the first pushed bus
+let busRef = null; // Store reference to the bus node
 
 // Function to push latitude and longitude to Firebase
 function pushLocationToFirebase(latitude, longitude) {
-    
-    
-const customId = "BUS_A";
-const newData = {
-    latitude: latitude,
-        longitude: longitude,
-        bus_name : "bus",
-        status : "initial"
-};
-
-const newBusRef = push(customId :{
-    latitude: latitude,
-        longitude: longitude,
-        bus_name : "bus",
-        status : "initial"
-});
-
-    if (!firstBusRef) {
-        firstBusRef = newBusRef; // Store the reference to the first pushed bus
+    if (!busRef) {
+        busRef = push(BUSESRef); // Store the reference to the bus node if not already set
     }
 
-} 
+    update(busRef, {
+        latitude: latitude,
+        longitude: longitude,
+        bus_name: "bus",
+        status: "updated"
+    });
+}
 
-function UpdateLocation(latitude, longitude){
-    if (firstBusRef) {
-        update(firstBusRef, { // Update the properties of the first pushed bus
+function UpdateLocation(latitude, longitude) {
+    if (busRef) {
+        update(busRef, {
             latitude: latitude,
             longitude: longitude,
-            status : "updated3"
+            status: "updated"
         });
     } else {
         console.error("No bus data found.");
     }
 }
 
+var latitude;
+var longitude;
+
 function getLocation() {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
-            
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
             pushLocationToFirebase(latitude, longitude);
-            setInterval(UpdateLocation(latitude, longitude),40000);
+            UpdateLocation(latitude, longitude);
 
-setInterval(() => UpdateLocation(latitude, longitude), 40000);
-
-           //UpdateLocation(latitude, longitude);
-           // document.getElementById("location").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
         }, function(error) {
-            switch(error.code) {
+            switch (error.code) {
                 case error.PERMISSION_DENIED:
                     alert("User denied the request for Geolocation. Please enable it in your browser settings to continue.");
                     break;
@@ -78,9 +66,8 @@ setInterval(() => UpdateLocation(latitude, longitude), 40000);
             }
         });
     } else {
-        // Geolocation not supported
         alert("Geolocation is not supported by this browser.");
     }
 }
 
-getLocation(); // Call the function to request geolocation when the page loads
+setInterval(() => getLocation(), 20000);

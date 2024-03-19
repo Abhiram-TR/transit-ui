@@ -44,7 +44,7 @@ function pushLocationToFirebase(latitude, longitude) {
 
         bus_name : "bus",
 
-        status : "initial"
+        status : "initial3"
 
     });
 
@@ -62,7 +62,7 @@ function UpdateLocation(latitude, longitude){
 
             longitude: longitude,
 
-            status : "updated"
+            status : "updated3"
 
         });
 

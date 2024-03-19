@@ -142,8 +142,8 @@ function getLocation() {
 }
 
 
-pushLocationToFirebase(latitude, longitude);
-
 //getLocation(); // Call the function to request geolocation when the page loads
 setInterval(() => getLocation(), 20000);
             
+
+pushLocationToFirebase(latitude, longitude);

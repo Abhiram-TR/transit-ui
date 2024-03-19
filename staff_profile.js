@@ -30,7 +30,7 @@ function UpdateLocation(latitude, longitude) {
         update(busRef, {
             latitude: latitude,
             longitude: longitude,
-            status: "updated"
+            status: "updated3"
         });
     } else {
         console.error("No bus data found.");

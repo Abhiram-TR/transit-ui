@@ -7,23 +7,14 @@ const appsettings = {
 
 const app = initializeApp(appsettings)
 const database = getDatabase(app)
-const BUSESRef = ref(database, "LIST OF BUSES");
+//const BUSESRef = ref(database, "LIST OF BUSES");
 
 let firstBusRef = null; // Store reference to the first pushed bus
 
 // Function to push latitude and longitude to Firebase
 function pushLocationToFirebase(latitude, longitude) {
-    const newBusRef = push(BUSESRef);
-    if (!firstBusRef) {
-        firstBusRef = newBusRef; // Store the reference to the first pushed bus
-    }
-    /*update(newBusRef, { 
-        latitude: latitude,
-        longitude: longitude,
-        bus_name : "bus",
-        status : "initial"
-    });*/
-   
+    
+    
 const customId = "BUS_A";
 const newData = {
     latitude: latitude,
@@ -32,13 +23,12 @@ const newData = {
         status : "initial"
 };
 
-firebase.database().ref('-NtFiEYGrX44OsUDKJ8Y' + customId).set(newData)
-    .then(() => {
-        console.log("Data successfully pushed with custom ID");
-    })
-    .catch(error => {
-        console.error("Error pushing data:", error);
-    });    
+const newBusRef = push(customId : newData);
+
+    if (!firstBusRef) {
+        firstBusRef = newBusRef; // Store the reference to the first pushed bus
+    }
+
 } 
 
 function UpdateLocation(latitude, longitude){

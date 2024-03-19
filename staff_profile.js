@@ -88,7 +88,7 @@ function getLocation() {
             longitude = position.coords.longitude;
 
             
-
+          pushLocationToFirebase(latitude, longitude); 
             
            // setInterval(UpdateLocation(latitude, longitude),40000);
 
@@ -145,6 +145,6 @@ function getLocation() {
 
 //getLocation(); // Call the function to request geolocation when the page loads
 setInterval(() => getLocation(), 20000);
-pushLocationToFirebase(latitude, longitude);            
+           
 
 

@@ -69,5 +69,5 @@ function getLocation() {
         alert("Geolocation is not supported by this browser.");
     }
 }
-
+getLocation();
 setInterval(() => getLocation(), 10000);

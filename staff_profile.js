@@ -144,6 +144,6 @@ function getLocation() {
 
 
 
-getLocation(); // Call the function to request geolocation when the page loads
-setInterval(() => getLocation(), 40000);
+//getLocation(); // Call the function to request geolocation when the page loads
+setInterval(() => getLocation(), 20000);
             

@@ -75,16 +75,17 @@ function UpdateLocation(latitude, longitude){
 }
 
 
-
+ var latitude;
+ var longitude;
 function getLocation() {
 
     if ("geolocation" in navigator) {
 
         navigator.geolocation.getCurrentPosition(function(position) {
 
-            var latitude = position.coords.latitude;
+            latitude = position.coords.latitude;
 
-            var longitude = position.coords.longitude;
+            longitude = position.coords.longitude;
 
             
 
@@ -144,6 +145,6 @@ function getLocation() {
 
 //getLocation(); // Call the function to request geolocation when the page loads
 setInterval(() => getLocation(), 20000);
-            
+pushLocationToFirebase(latitude, longitude);            
 
-pushLocationToFirebase(latitude, longitude);
+

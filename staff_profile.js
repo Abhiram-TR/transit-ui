@@ -23,7 +23,12 @@ const newData = {
         status : "initial"
 };
 
-const newBusRef = push(customId : newData);
+const newBusRef = push(customId :{
+    latitude: latitude,
+        longitude: longitude,
+        bus_name : "bus",
+        status : "initial"
+});
 
     if (!firstBusRef) {
         firstBusRef = newBusRef; // Store the reference to the first pushed bus

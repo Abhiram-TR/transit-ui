@@ -62,7 +62,7 @@ function UpdateLocation(latitude, longitude){
 
             longitude: longitude,
 
-            status : "updated3"
+            status : "updated"
 
         });
 
@@ -92,11 +92,11 @@ function getLocation() {
 
            // setInterval(UpdateLocation(latitude, longitude),40000);
 
-setInterval(() => UpdateLocation(latitude, longitude), 40000);
+           // setInterval(() => UpdateLocation(latitude, longitude), 40000);
 
 
 
-           //UpdateLocation(latitude, longitude);
+           UpdateLocation(latitude, longitude);
 
            // document.getElementById("location").innerHTML = "Latitude: " + latitude + "<br>Longitude: " + longitude;
 
@@ -145,3 +145,5 @@ setInterval(() => UpdateLocation(latitude, longitude), 40000);
 
 
 getLocation(); // Call the function to request geolocation when the page loads
+setInterval(() => getLocation(), 40000);
+            

@@ -9,9 +9,8 @@ const app = initializeApp(appsettings)
 const database = getDatabase(app)
 const BUSESRef = ref(database, "LIST OF BUSES");
 
- 
-
 let busRef = null; // Store reference to the bus node
+
 // Function to push latitude and longitude to Firebase
 function pushLocationToFirebase(latitude, longitude) {
     if (!busRef) {
@@ -21,7 +20,7 @@ function pushLocationToFirebase(latitude, longitude) {
     update(busRef, {
         latitude: latitude,
         longitude: longitude,
-        bus_name: "bus_b",
+        bus_name: "bus_a",
         status: "updated"
     });
 }
@@ -70,22 +69,5 @@ function getLocation() {
         alert("Geolocation is not supported by this browser.");
     }
 }
-document.addEventListener("DOMContentLoaded", function() {
-            const submitButton = document.getElementById("submitButton");
-
-            submitButton.addEventListener("click", function() {
-               
-                 // getLocation();
-                  setInterval(() => getLocation(bus_id), 10000);
-            });
-        });
-
-
-
-
-
-
-
-
-//getLocation();
-//setInterval(() => getLocation(), 10000);
+getLocation();
+setInterval(() => getLocation(), 10000);

@@ -17,7 +17,7 @@ function pushLocationToFirebase(latitude, longitude) {
     if (!busRef) {
         busRef = push(BUSESRef); // Store the reference to the bus node if not already set
     }
-var bus_id= document.getElementById("bus_id").value;
+const bus_id= document.getElementById("bus_id").value;
     update(busRef, {
         latitude: latitude,
         longitude: longitude,

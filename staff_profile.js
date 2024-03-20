@@ -9,12 +9,9 @@ const app = initializeApp(appsettings)
 const database = getDatabase(app)
 const BUSESRef = ref(database, "LIST OF BUSES");
 
+ var bus_id= document.getElementById("bus_id").value;
+
 let busRef = null; // Store reference to the bus node
-const urlParams = new URLSearchParams(window.location.search);
- const bus_id = urlParams.get('bus_id');
-
-console.log(bus_id);
-
 // Function to push latitude and longitude to Firebase
 function pushLocationToFirebase(latitude, longitude) {
     if (!busRef) {
@@ -73,5 +70,22 @@ function getLocation() {
         alert("Geolocation is not supported by this browser.");
     }
 }
-getLocation();
-setInterval(() => getLocation(), 10000);
+document.addEventListener("DOMContentLoaded", function() {
+            const submitButton = document.getElementById("submitButton");
+
+            submitButton.addEventListener("click", function() {
+               
+                  getLocation();
+                  setInterval(() => getLocation(), 10000);
+            });
+        });
+
+
+
+
+
+
+
+
+//getLocation();
+//setInterval(() => getLocation(), 10000);

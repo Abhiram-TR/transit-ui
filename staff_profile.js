@@ -13,11 +13,11 @@ const BUSESRef = ref(database, "LIST OF BUSES");
 
 let busRef = null; // Store reference to the bus node
 // Function to push latitude and longitude to Firebase
-function pushLocationToFirebase(latitude, longitude) {
+function pushLocationToFirebase(latitude, longitude,bus_id) {
     if (!busRef) {
         busRef = push(BUSESRef); // Store the reference to the bus node if not already set
     }
-const bus_id= document.getElementById("bus_id").value;
+
     update(busRef, {
         latitude: latitude,
         longitude: longitude,
@@ -41,13 +41,13 @@ function UpdateLocation(latitude, longitude) {
 var latitude;
 var longitude;
 
-function getLocation() {
+function getLocation(bus_id) {
     if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
             latitude = position.coords.latitude;
             longitude = position.coords.longitude;
 
-            pushLocationToFirebase(latitude, longitude);
+            pushLocationToFirebase(latitude, longitude,bus_id);
             UpdateLocation(latitude, longitude);
 
         }, function(error) {
@@ -76,7 +76,8 @@ document.addEventListener("DOMContentLoaded", function() {
             submitButton.addEventListener("click", function() {
                
                  // getLocation();
-                  setInterval(() => getLocation(), 20000);
+                const bus_id= document.getElementById("bus_id").value;
+                  setInterval(() => getLocation(bus_id), 20000);
             });
         });
 

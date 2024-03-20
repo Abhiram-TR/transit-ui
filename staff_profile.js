@@ -13,6 +13,8 @@ let busRef = null; // Store reference to the bus node
 const urlParams = new URLSearchParams(window.location.search);
  const bus_id = urlParams.get('bus_id');
 
+console.log(bus_id);
+
 // Function to push latitude and longitude to Firebase
 function pushLocationToFirebase(latitude, longitude) {
     if (!busRef) {

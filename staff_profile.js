@@ -10,6 +10,8 @@ const database = getDatabase(app)
 const BUSESRef = ref(database, "LIST OF BUSES");
 
 let busRef = null; // Store reference to the bus node
+const urlParams = new URLSearchParams(window.location.search);
+ const bus_id = urlParams.get('bus_id');
 
 // Function to push latitude and longitude to Firebase
 function pushLocationToFirebase(latitude, longitude) {
@@ -20,7 +22,7 @@ function pushLocationToFirebase(latitude, longitude) {
     update(busRef, {
         latitude: latitude,
         longitude: longitude,
-        bus_name: "bus_a",
+        bus_name: bus_id,
         status: "updated"
     });
 }

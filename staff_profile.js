@@ -75,8 +75,8 @@ document.addEventListener("DOMContentLoaded", function() {
 
             submitButton.addEventListener("click", function() {
                
-                  getLocation();
-                  setInterval(() => getLocation(), 10000);
+                 // getLocation();
+                  setInterval(() => getLocation(), 20000);
             });
         });
 

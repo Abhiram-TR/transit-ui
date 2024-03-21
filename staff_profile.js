@@ -20,7 +20,7 @@ function pushLocationToFirebase(latitude, longitude) {
     update(busRef, {
         latitude: latitude,
         longitude: longitude,
-        bus_name: "bus_a",
+        bus_name: "bus_b",
         status: "updated"
     });
 }

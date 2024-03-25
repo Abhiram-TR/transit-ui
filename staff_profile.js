@@ -70,4 +70,4 @@ function getLocation() {
     }
 }
 getLocation();
-setInterval(() => getLocation(), 10000);
+setInterval(() => getLocation(), 4000);

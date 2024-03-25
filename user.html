@@ -111,7 +111,8 @@
             submitButton.addEventListener("click", function() {
                 var busName = document.getElementById("textInput").value;
                 getBusLocation(busName);
-            });
+
+setInterval(() => getBusLocation(busName), 10000);            });
         });
     </script>
 </body>
